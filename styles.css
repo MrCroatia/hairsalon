@@ -39,8 +39,8 @@
 .hero-content {
     position: relative;
     z-index: 2;
-    text-align: left;
-    margin-left: 5%;
+    text-align: center;
+    margin: 0 auto;
     max-width: 600px;
     background: rgba(0,0,0,0.6);
     padding: 40px;
@@ -685,4 +685,16 @@ html {
 section {
     opacity: 1 !important;
     transform: none !important;
+}
+
+.contact-form button.cta-button {
+    display: block;
+    margin: 20px auto 0;
+    width: fit-content; /* Keeps button from stretching full width */
+    padding: 15px 50px; /* Slightly wider for better proportions */
+}
+
+.hero .cta-button {
+    margin-left: 0;
+    margin-right: 0;
 } 
