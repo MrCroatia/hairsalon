@@ -46,6 +46,10 @@
     padding: 40px;
     border-radius: 15px;
     backdrop-filter: blur(5px);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.3s;
 }
 
 .hero h1 {
@@ -92,12 +96,20 @@
 
 /* Add animations */
 .slide-up {
-    animation: slideUp 0.8s ease-out;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
 }
 
-@keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Add container styling */
@@ -655,4 +667,22 @@ footer p {
     letter-spacing: 1px;
     font-size: 0.9rem;
     color: rgba(255,255,255,0.6);
+}
+
+/* Add active state styling */
+.nav-links a.active {
+    background: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(197,164,126,0.3);
+}
+
+/* Add scroll animation */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Section entry animations */
+section {
+    opacity: 1 !important;
+    transform: none !important;
 } 
