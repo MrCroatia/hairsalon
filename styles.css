@@ -24,7 +24,7 @@
 
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7)),
+    background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.3)),
                 url('hero-bg.jpg') center/cover;
     display: flex;
     align-items: center;
