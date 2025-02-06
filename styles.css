@@ -8,7 +8,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Tajawal', sans-serif;
 }
 
 .navbar {
@@ -28,6 +28,35 @@
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+.hero-image {
+    display: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    margin-left: 5%;
+    max-width: 600px;
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin: 20px 0;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .services-grid {
@@ -77,12 +106,6 @@
 }
 
 /* Hero section improvements */
-.hero-content {
-    text-align: center;
-    max-width: 800px;
-    padding: 20px;
-}
-
 .cta-button {
     display: inline-block;
     padding: 15px 40px;
@@ -96,24 +119,90 @@
 
 /* About section layout */
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    margin-top: 40px;
+    padding: 50px 40px;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .about-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px 0;
+    text-align: justify;
+    text-align-last: center;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.about-text p::before {
+    content: "✂️";
+    position: absolute;
+    left: -10px;
+    top: -5px;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .about-text {
+        text-align: left;
+        text-align-last: left;
+        padding: 0 10px;
+    }
+    
+    .about-text p::before {
+        display: none;
+    }
 }
 
 /* Pricing grid layout */
 .price-table {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    max-width: 800px;
+    margin: 40px auto 0;
+}
+
+.price-column {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.price-category {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+}
+
+.price-item:last-child {
+    border-bottom: none;
+}
+
+.price {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 /* Contact form styling */
@@ -146,15 +235,42 @@
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .about-content {
-        grid-template-columns: 1fr;
+        padding: 30px 20px;
     }
     
     .nav-links {
         display: none; /* Add mobile menu logic later */
     }
     
+    .hero {
+        height: auto;
+        padding: 100px 0;
+    }
+    
+    .hero-image {
+        width: 100%;
+        position: static;
+        transform: none;
+        border-radius: 0;
+    }
+    
+    .hero-content {
+        margin: 20px;
+        text-align: center;
+        background: rgba(0,0,0,0.8);
+    }
+    
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+    
+    .price-table {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .price-column {
+        padding: 30px;
     }
 }
 
@@ -177,4 +293,269 @@
 .slide-up.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Update navigation styles */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 400;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-links a:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.nav-links a:hover::before {
+    left: 100%;
+}
+
+/* Update logo styling */
+.logo {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Add navbar spacing */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* SIMPLIFIED ABOUT SECTION */
+.about-section {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('barber-tools.jpg') center/cover;
+    min-height: 60vh;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.about-content {
+    background: rgba(255, 255, 255, 0.95);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    color: var(--primary);
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.highlight-text {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin: 2rem 0;
+    position: relative;
+    display: inline-block;
+}
+
+.highlight-text::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 1.5rem 0;
+    color: #444;
+}
+
+.signature {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.signature img {
+    height: 50px;
+    margin-bottom: 1rem;
+    filter: invert(90%);
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 4rem 0;
+        background-attachment: scroll;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .highlight-text {
+        font-size: 1.2rem;
+    }
+    
+    .about-content p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+/* All About-related CSS removed */
+
+/* Temporary debug */
+.about-section {
+    border: none;
+}
+
+/* Update text styling */
+.about-content {
+    padding: 50px 40px;
+    text-align: left;
+}
+
+.featured-text {
+    font-size: 1.3rem;
+    line-height: 1.85;
+    color: var(--primary);
+    margin: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        padding: 30px 20px;
+    }
+    
+    .featured-text {
+        font-size: 1.15rem;
+    }
+}
+
+/* Map Section */
+.map-section {
+    padding: 80px 0 40px;
+    background: var(--light);
+}
+
+.map-container {
+    margin-top: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .map-container iframe {
+        height: 300px;
+    }
+}
+
+/* Center all section headings with accent line */
+.section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .section h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    
+    .section h2::after {
+        bottom: -12px;
+        width: 50px;
+    }
+}
+
+/* Update Pricing section background to match Contact section */
+#pricing.dark-bg {
+    background: var(--primary); /* Using the same dark gray variable */
+}
+
+/* Adjust price column styling for better contrast */
+#pricing .price-column {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Remove conflicting black background rule */
+#pricing {
+    background: none;
+    color: inherit;
+}
+
+/* Keep accent colors */
+#pricing .price-category {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+#pricing .price {
+    color: var(--accent);
 } 
