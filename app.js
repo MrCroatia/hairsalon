@@ -10,10 +10,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Navbar scroll effect
 window.addEventListener('scroll', function() {
-    if (window.scrollY > 100) {
-        document.querySelector('.navbar').style.background = 'rgba(42, 42, 42, 0.95)';
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled-nav');
     } else {
-        document.querySelector('.navbar').style.background = 'rgba(42, 42, 42, 0.8)';
+        navbar.classList.remove('scrolled-nav');
     }
 });
 
