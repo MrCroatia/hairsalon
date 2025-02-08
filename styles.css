@@ -23,46 +23,62 @@
 }
 
 .hero {
+    position: relative;
     height: 100vh;
     background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.3)),
                 url('hero-bg.jpg') center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
-.hero-image {
-    display: none;
+    overflow: hidden;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
     text-align: center;
-    margin: 0 auto;
-    max-width: 600px;
-    background: rgba(0,0,0,0.6);
+}
+
+.hero-text {
+    max-width: 800px;
     padding: 40px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
     border-radius: 15px;
-    backdrop-filter: blur(5px);
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s ease-out forwards;
-    animation-delay: 0.3s;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero p {
-    font-size: 1.4rem;
-    margin: 20px 0;
+.hero-title {
+    font-size: 4.5rem;
     font-weight: 300;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-title .line {
+    display: block;
+    overflow: hidden;
+}
+
+.hero-title span {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: textReveal 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes textReveal {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hero-image {
+    display: none;
 }
 
 .services-grid {
@@ -122,39 +138,23 @@
 /* Hero section improvements */
 .cta-button {
     display: inline-block;
-    padding: 15px 40px;
+    padding: 18px 45px;
     background-color: var(--accent);
     color: white;
     text-decoration: none;
     border-radius: 30px;
-    margin-top: 20px;
-    transition: transform 0.3s, background-color 0.3s;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid var(--accent);
-    background: linear-gradient(45deg, 
-        rgba(197,164,126,0.8), 
-        rgba(197,164,126,0.6));
-    backdrop-filter: blur(5px);
+    margin-top: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
-.cta-button::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, 
-        transparent, 
-        rgba(255,255,255,0.2), 
-        transparent);
-    transform: rotate(45deg);
-    transition: 0.5s;
-}
-
-.cta-button:hover::before {
-    left: 50%;
+.cta-button:hover {
+    background: transparent;
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(197,164,126,0.2);
 }
 
 /* About section layout */
@@ -220,32 +220,29 @@
 /* Pricing grid layout */
 .price-table {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    max-width: 800px;
-    margin: 40px auto 0;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
 }
 
 .price-column {
-    background: linear-gradient(145deg, #1a1a1a, #252525);
-    padding: 40px;
+    background: white;
+    padding: 2.5rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
 .price-column:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    transform: translateY(-10px);
 }
 
 .price-category {
-    color: var(--accent);
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 15px;
-    margin-bottom: 30px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 .price-item {
@@ -423,53 +420,36 @@
     align-items: center;
 }
 
-/* SIMPLIFIED ABOUT SECTION */
+/* Updated About Section */
 .about-section {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('barber-tools.jpg') center/cover;
-    min-height: 60vh;
+    background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7)), 
+                url('texture-bg.jpg') center/cover;
     padding: 100px 0;
-    display: flex;
-    align-items: center;
-}
-
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
 }
 
 .about-content {
-    background: rgba(255, 255, 255, 0.95);
     max-width: 800px;
     margin: 0 auto;
-    padding: 60px 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    color: var(--primary);
+    padding: 50px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 25px;
     text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
 }
 
-.section-title {
+.section-subtitle {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.highlight-text {
-    font-size: 1.5rem;
-    color: var(--accent);
-    margin: 2rem 0;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
     position: relative;
     display: inline-block;
 }
 
-.highlight-text::after {
+.section-subtitle::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     width: 60px;
@@ -477,42 +457,61 @@
     background: var(--accent);
 }
 
-.about-content p {
-    font-size: 1.1rem;
+.about-description {
+    font-size: 1.2rem;
     line-height: 1.8;
-    margin: 1.5rem 0;
     color: #444;
+    margin: 2rem auto;
+    max-width: 600px;
 }
 
-.signature {
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
     margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.signature img {
-    height: 50px;
-    margin-bottom: 1rem;
-    filter: invert(90%);
+.stat-item {
+    padding: 20px;
+    background: rgba(197,164,126,0.1);
+    border-radius: 15px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
 }
 
 @media (max-width: 768px) {
-    .about-section {
-        padding: 4rem 0;
-        background-attachment: scroll;
+    .about-content {
+        padding: 30px;
+        margin: 0 15px;
+        border-radius: 15px;
     }
     
-    .section-title {
+    .section-subtitle {
         font-size: 2rem;
     }
     
-    .highlight-text {
-        font-size: 1.2rem;
+    .about-description {
+        font-size: 1rem;
     }
     
-    .about-content p {
-        font-size: 1rem;
-        padding: 0 1rem;
+    .stat-number {
+        font-size: 2rem;
     }
 }
 
@@ -697,4 +696,41 @@ section {
 .hero .cta-button {
     margin-left: 0;
     margin-right: 0;
+}
+
+/* Modern Split Section */
+.split-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+}
+
+.split-image {
+    position: relative;
+    background: url('modern-barber.jpg') center/cover;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0,0,0,0.8) 30%, transparent 100%);
+}
+
+.split-content {
+    padding: 8% 10%;
+    background: #f8f8f8;
+    position: relative;
+}
+
+.about-description {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #333;
+    margin: 2rem 0;
+    position: relative;
+    padding-left: 2rem;
+    border-left: 3px solid var(--accent);
 } 

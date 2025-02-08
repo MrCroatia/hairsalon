@@ -28,4 +28,24 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in, .slide-up').forEach((el) => {
     observer.observe(el);
+});
+
+// Hero text animation
+gsap.to(".hero-title span", {
+    duration: 1,
+    y: 0,
+    opacity: 1,
+    stagger: 0.1,
+    ease: "power4.out"
+});
+
+// Hover effect for price cards
+document.querySelectorAll('.price-column').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
 }); 
